@@ -1,0 +1,18 @@
+@media (max-width: 600px) {
+    .container {
+      padding: 20px !important;
+    }
+  
+    .title {
+      font-size: 24px !important;
+    }
+  
+    .message {
+      font-size: 16px !important;
+    }
+  
+    .button {
+      font-size: 16px !important;
+      padding: 10px 20px !important;
+    }
+  }
