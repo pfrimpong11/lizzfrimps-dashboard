@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { MessageSquare, ShoppingBag, Upload, Edit2, Trash2, LogOut } from 'lucide-react';
+import { MessageSquare, ShoppingBag, Upload, Edit2, Trash2, LogOut, Menu, X } from 'lucide-react';
 import AdminUpload from '../components/AdminUpload';
 import AdminEditCake from '../components/AdminEditCake';
 import AdminDeleteCake from '../components/AdminDeleteCake';
@@ -16,8 +16,9 @@ const AdminDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState('Upload Cake Item');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [admin, setAdmin] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-   // Check authentication when the component loads
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
@@ -25,7 +26,7 @@ const AdminDashboard: React.FC = () => {
           headers: {
             Authorization: `Bearer ${sessionStorage.getItem("token")}`,
             'Content-Type': 'application/json'
-        }
+          }
         });
         
         if (response.data.isAuthenticated) {
@@ -40,17 +41,26 @@ const AdminDashboard: React.FC = () => {
       }
     };
     checkAuthentication();
+
+    const handleResize = () => {
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+      setIsSidebarOpen(!mobile);
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize);
   }, [navigate]);
-
-
-  // if (!isAuthenticated) {
-  //   return null;
-  // }
-
 
   const handleLogout = () => {
     sessionStorage.removeItem("token"); 
     navigate("/");
+  };
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
   };
 
   const dashboardStyle: React.CSSProperties = {
@@ -82,16 +92,21 @@ const AdminDashboard: React.FC = () => {
     padding: '1rem',
     display: 'flex',
     flexDirection: 'column',
-    position: 'sticky',
+    position: isMobile ? 'fixed' : 'sticky',
     top: 0,
-    height: '90vh',
+    bottom: isMobile ? 0 : 'auto',
+    left: isMobile ? (isSidebarOpen ? '0' : '-250px') : 'auto',
+    height: isMobile ? '100%' : 'calc(100vh - 64px)', // Adjust based on your header height
+    transition: 'left 0.3s ease-in-out',
+    zIndex: 1000,
+    overflowY: 'auto',
   };
 
   const mainContentStyle: React.CSSProperties = {
     flex: 1,
     padding: '2rem',
-    overflowY: 'auto',
-    maxHeight: '90vh',
+    marginLeft: isMobile ? 0 : (isSidebarOpen ? '0' : 0),
+    transition: 'margin-left 0.3s ease-in-out',
   };
 
   const tabStyle: React.CSSProperties = {
@@ -128,6 +143,11 @@ const AdminDashboard: React.FC = () => {
     transition: 'background-color 0.3s',
   };
 
+  const menuIconStyle: React.CSSProperties = {
+    cursor: 'pointer',
+    display: isMobile ? 'block' : 'none',
+  };
+
   const renderContent = () => {
     switch (activeTab) {
       case 'Upload Cake Item':
@@ -148,11 +168,20 @@ const AdminDashboard: React.FC = () => {
   return (
     <div style={dashboardStyle} className="admin-dashboard">
       <header style={headerStyle}>
-        <h1>Lizzfrimps Cakes Empire Admin</h1>
+        <div className="header-content">
+          {isMobile && (
+            isSidebarOpen ? (
+              <X size={24} onClick={toggleSidebar} style={menuIconStyle} className="menu-icon" />
+            ) : (
+              <Menu size={24} onClick={toggleSidebar} style={menuIconStyle} className="menu-icon" />
+            )
+          )}
+          <h1>Lizzfrimps Cakes Empire Admin</h1>
+        </div>
         <span>Welcome, Admin</span>
       </header>
       <div style={contentStyle}>
-        <nav style={sidebarStyle} className="admin-sidebar">
+        <nav style={sidebarStyle} className={`admin-sidebar ${isSidebarOpen ? 'open' : ''}`}>
           {[
             { name: 'Upload Cake Item', icon: Upload },
             { name: 'View and Edit Cakes', icon: Edit2 },
@@ -163,7 +192,12 @@ const AdminDashboard: React.FC = () => {
             <div
               key={item.name}
               style={activeTab === item.name ? activeTabStyle : tabStyle}
-              onClick={() => setActiveTab(item.name)}
+              onClick={() => {
+                setActiveTab(item.name);
+                if (isMobile) {
+                  setIsSidebarOpen(false);
+                }
+              }}
               className="dashboard-tab"
             >
               <item.icon size={20} style={tabIconStyle} className="dashboard-tab-icon" />

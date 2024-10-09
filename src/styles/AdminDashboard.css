@@ -1,70 +1,78 @@
+.admin-dashboard {
+  animation: fadeIn 0.5s ease-out;
+}
+
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.dashboard-tab {
+  transition: all 0.3s ease;
+}
+
+.dashboard-tab:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.logout-button:hover {
+  background-color: #C53030;
+}
+
+.menu-icon {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
   }
-  
-  .admin-dashboard {
-    animation: fadeIn 0.5s ease-out;
+
+  .admin-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -250px;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
   }
-  
+
+  .admin-sidebar.open {
+    left: 0;
+  }
+
+  .admin-main {
+    margin-left: 0 !important;
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-content h1 {
+    margin-left: 1rem;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-dashboard header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-dashboard header h1 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
   .dashboard-tab {
-    transition: all 0.3s ease;
+    padding: 0.5rem;
+    font-size: 0.9rem;
   }
-  
-  .dashboard-tab:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+
+  .dashboard-tab-icon {
+    margin-right: 0.25rem;
   }
-  
-  .logout-button:hover {
-    background-color: #C53030;
-  }
-  
-  @media (max-width: 768px) {
-    .admin-dashboard {
-      flex-direction: column;
-    }
-  
-    .admin-sidebar {
-      width: 100%;
-      flex-direction: row;
-      overflow-x: auto;
-      padding: 0.5rem;
-    }
-  
-    .dashboard-tab {
-      flex: 0 0 auto;
-      margin-right: 0.5rem;
-    }
-  
-    .admin-main {
-      padding: 1rem;
-    }
-  
-    .logout-button {
-      position: fixed;
-      bottom: 1rem;
-      right: 1rem;
-      z-index: 10;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .admin-dashboard header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .admin-dashboard header h1 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-  
-    .dashboard-tab {
-      padding: 0.5rem;
-      font-size: 0.9rem;
-    }
-  
-    .dashboard-tab-icon {
-      margin-right: 0.25rem;
-    }
-  }
+}

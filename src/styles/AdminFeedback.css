@@ -1,0 +1,94 @@
+.admin-feedback {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .feedback-card {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  
+  .feedback-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  .refresh-button:hover,
+  .delete-button:hover,
+  .expand-button:hover {
+    opacity: 0.8;
+  }
+  
+  .feedback-info {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .feedback-info p {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .feedback-message {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .loading,
+  .error,
+  .no-feedback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 18px;
+  }
+  
+  .loading {
+    background-color: #EDF2F7;
+    color: #4A5568;
+  }
+  
+  .error {
+    background-color: #FED7D7;
+    color: #9B2C2C;
+  }
+  
+  .no-feedback {
+    background-color: #FEEBC8;
+    color: #7B341E;
+  }
+  
+  @media (max-width: 768px) {
+    .admin-feedback {
+      padding: 10px;
+    }
+  
+    .feedback-info {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .feedback-card {
+      padding: 15px;
+    }
+  
+    .feedback-card h2 {
+      font-size: 18px;
+    }
+  
+    .feedback-info,
+    .feedback-message {
+      font-size: 14px;
+    }
+  }

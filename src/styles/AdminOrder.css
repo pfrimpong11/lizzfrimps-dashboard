@@ -1,0 +1,79 @@
+.admin-order {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .admin-order h1 {
+    color: #2D3748;
+  }
+  
+  .admin-order button {
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .admin-order button:hover {
+    transform: translateY(-2px);
+  }
+  
+  .admin-order table {
+    transition: all 0.3s ease;
+  }
+  
+  .admin-order tr {
+    transition: background-color 0.3s;
+  }
+  
+  .admin-order tr:hover {
+    background-color: #EDF2F7;
+  }
+  
+  .error-message {
+    background-color: #FED7D7;
+    color: #9B2C2C;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  
+  .loading {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color: #4A5568;
+  }
+  
+  @media (max-width: 768px) {
+    .admin-order {
+      padding: 10px;
+    }
+  
+    .admin-order table {
+      font-size: 14px;
+    }
+  
+    .admin-order th, .admin-order td {
+      padding: 8px;
+    }
+  
+    .admin-order button {
+      padding: 6px 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .admin-order table {
+      font-size: 12px;
+    }
+  
+    .admin-order th, .admin-order td {
+      padding: 6px;
+    }
+  
+    .admin-order button {
+      padding: 4px 8px;
+    }
+  }

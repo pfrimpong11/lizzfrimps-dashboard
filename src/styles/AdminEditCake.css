@@ -1,0 +1,75 @@
+.admin-edit-cake {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .cake-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .cake-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .edit-button:hover {
+    background-color: #DD6B20;
+  }
+  
+  .edit-form, .no-cake-selected {
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateX(20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  
+  .submit-button:hover {
+    background-color: #38A169;
+  }
+  
+  .cancel-button:hover {
+    background-color: #C53030;
+  }
+  
+  .loading, .error {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: #4A5568;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 1024px) {
+    .admin-edit-cake {
+      flex-direction: column;
+    }
+  
+    .edit-form, .no-cake-selected {
+      position: static;
+      margin-top: 2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .admin-edit-cake {
+      padding: 1rem;
+    }
+  
+    .edit-form, .no-cake-selected {
+      padding: 1rem;
+    }
+  
+    .button-group {
+      flex-direction: column;
+    }
+  }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Edit2, X, Check, Loader } from 'lucide-react';
+import '../styles/AdminEditCake.css';
 
 interface Cake {
   _id: string;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Upload, Check, Image as ImageIcon } from 'lucide-react';
-// import '../styles/AdminUpload.css';
+import '../styles/AdminUpload.css';
 
 const AdminUpload: React.FC = () => {
   const [formData, setFormData] = useState({

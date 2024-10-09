@@ -316,9 +316,9 @@ const RegisterPage: React.FC = () => {
             Register
           </button>
         </form>
-        <p style={{ textAlign: "center", marginTop: "20px" }}>
+        {/* <p style={{ textAlign: "center", marginTop: "20px" }}>
           Already have an account? <a href="/" style={linkStyle} className="register-link">Sign in</a>
-        </p>
+        </p> */}
       </div>
     </div>
   );

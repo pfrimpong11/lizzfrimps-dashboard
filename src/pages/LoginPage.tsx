@@ -221,12 +221,12 @@ const LoginPage: React.FC = () => {
             Forgot Password?
           </a>
         </div>
-        <p style={{ textAlign: "center", marginTop: "20px" }}>
+        {/* <p style={{ textAlign: "center", marginTop: "20px" }}>
           Don't have an account?{" "}
           <a href="/RegisterPage" style={linkStyle} className="login-link">
             Register
           </a>
-        </p>
+        </p> */}
       </div>
     </div>
   );

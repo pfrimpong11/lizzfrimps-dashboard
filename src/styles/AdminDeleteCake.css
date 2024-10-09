@@ -1,0 +1,56 @@
+.admin-delete-cake {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .cake-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .cake-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .delete-button:hover {
+    background-color: #C53030;
+  }
+  
+  .loading, .error, .no-cakes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: #4A5568;
+    text-align: center;
+  }
+  
+  .loading svg, .error svg {
+    margin-right: 0.5rem;
+  }
+  
+  .error {
+    color: #E53E3E;
+  }
+  
+  @media (max-width: 768px) {
+    .admin-delete-cake {
+      padding: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .cake-item {
+      font-size: 0.9rem;
+    }
+  
+    .delete-button {
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+    }
+  }
